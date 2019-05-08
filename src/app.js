@@ -1,44 +1,64 @@
 console.log('app.js is running');
 
 //JSX
-const titleObj = {
+const app = {
     title: 'Titleeee',
     subtitle: 'Subtitleee',
-    options: ['one', 'two']
-};
-const template = (
-    <div>
-        <h1>{titleObj.title}</h1>
-        {titleObj.subtitle && <p>{titleObj.subtitle}</p>}
-        <p>{titleObj.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-        <ol>
-            <li>item one</li>
-            <li>item two</li>
-        </ol>
-    </div>
-);
-const user = {
-    name: 'Bob',
-    age: 18,
-    location: 'Texas'
+    options: []
 };
 
-function getLocation(location) {
-    if (location) {
-        return <p>Location: {location}</p>;
+const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    const option = e.target.elements.option.value;
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render();
     }
+};
+
+const onRemoveAll = () => {
+    app.options = [];
+    render();
 }
 
-const templateTwo = (
-    <div>
-        <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
-    </div>
-);
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(
-    template,
-    appRoot
-);
+const numbers = [55, 101, 1000];
+
+const render = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <button onClick={onRemoveAll}>Remove All</button>
+            {
+                numbers.map((number) => {
+                    return <p key={number}>Number : {number}</p>;
+                })
+            }
+            <ol>
+                {
+                    app.options.map((option) => {
+                        return <li key={option}>{option}</li>
+                    })
+                }
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option" />
+                <button>Add option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(
+        template,
+        appRoot
+    );
+}
+
+render();
+
