@@ -4,8 +4,8 @@ console.log('app.js is running');
 
 //JSX
 var app = {
-    title: 'Titleeee',
-    subtitle: 'Subtitleee',
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
     options: []
 };
 
@@ -26,9 +26,13 @@ var onRemoveAll = function onRemoveAll() {
     render();
 };
 
-var appRoot = document.getElementById('app');
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    console.log(option);
+};
 
-var numbers = [55, 101, 1000];
+var appRoot = document.getElementById('app');
 
 var render = function render() {
     var template = React.createElement(
@@ -50,23 +54,15 @@ var render = function render() {
             app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { onClick: onMakeDecision, disabled: app.options.length === 0 },
+            'What should I do?'
         ),
         React.createElement(
             'button',
             { onClick: onRemoveAll },
             'Remove All'
         ),
-        numbers.map(function (number) {
-            return React.createElement(
-                'p',
-                { key: number },
-                'Number : ',
-                number
-            );
-        }),
         React.createElement(
             'ol',
             null,
