@@ -19,8 +19,9 @@ console.log(petName);
 //Block scoping
 
 var fullName = 'Bob Bobinski';
+let firstName;
 if (fullName) {
-    var firstName = fullName.split(' ')[0];
+    let firstName = fullName.split(' ')[0];
     console.log(firstName);
 }
 
