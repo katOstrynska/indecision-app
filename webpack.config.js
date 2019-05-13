@@ -11,9 +11,22 @@ module.exports = {
     },
     module: {
         rules: [{
-            loader: 'babel-loader',
             test: /\.js$/,
-            exclude: /node_modules/
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        '@babel/preset-env'
+                    ]
+                }
+            }
         }]
-    }
+    },
+    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'public'),
+        port: 8080
+    },
+    mode: 'development'
 };
