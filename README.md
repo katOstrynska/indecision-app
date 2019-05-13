@@ -18,7 +18,7 @@ Get into project folder, run CMD and type:
 **If we have LOCALLY installed babel-cli**
 Get into project folder, run CMD and type:
 
-`yarn run build`
+`yarn run build-babel`
 (build is commend from package.json)
 
 * Live server run
@@ -32,6 +32,15 @@ Get into project folder, run CMD and type:
 Get into project folder, run CMD and type:
 
 `yarn run serve`
+(serve is commend from package.json)
+
+* Webpack
+
+We don't nedd to rub babel command, bc Webpack run babel for us
+
+Get into project folder, run CMD and type:
+
+`yarn run build`
 (serve is commend from package.json)
 
 
