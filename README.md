@@ -41,7 +41,13 @@ We don't nedd to rub babel command, bc Webpack run babel for us
 Get into project folder, run CMD and type:
 
 `yarn run build`
-(serve is commend from package.json)
+(build is commend from package.json)
+
+* Webpack server
+
+Get into project folder, run CMD and type:
+
+`yarn run dev-server`
 
 
 
